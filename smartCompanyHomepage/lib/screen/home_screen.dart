@@ -49,7 +49,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       width: MediaQuery.of(context).size.width,
                       height: 200.0,
-                      child: Image.asset(''),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: Image.asset('asset/img/me.png'),
                     ),
                     Container(
                       height: 300.0,
@@ -57,25 +61,33 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           InkWell(
-                            onTap: (){},
+                            onTap: (){
+                              _mainScrollController.animateTo(0, duration: Duration(milliseconds: 1000), curve: Curves.fastOutSlowIn);
+                            },
                             child: Container(
                               child: Text('ABOUT', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,color: Colors.grey),),
                             ),
                           ),
                           InkWell(
-                            onTap: (){},
+                            onTap: (){
+                              _mainScrollController.animateTo(MediaQuery.of(context).size.height.toDouble(), duration: Duration(milliseconds: 1000), curve: Curves.fastOutSlowIn);
+                            },
                             child: Container(
                               child: Text('EXPERIENCE', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,color: Colors.grey),),
                             ),
                           ),
                           InkWell(
-                            onTap: (){},
+                            onTap: (){
+                              _mainScrollController.animateTo(MediaQuery.of(context).size.height.toDouble()*2, duration: Duration(milliseconds: 1000), curve: Curves.fastOutSlowIn);
+                            },
                             child: Container(
                               child: Text('EDUCATION', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,color: Colors.grey),),
                             ),
                           ),
                           InkWell(
-                            onTap: (){},
+                            onTap: (){
+                              _mainScrollController.animateTo(MediaQuery.of(context).size.height.toDouble()*3, duration: Duration(milliseconds: 1000), curve: Curves.fastOutSlowIn);
+                            },
                             child: Container(
                               child: Text('INTERESTS', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,color: Colors.grey),),
                             ),
@@ -170,6 +182,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         ],
                       ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width-300.0,
+                      color: Colors.red,
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width-300.0,
+                      color: Colors.yellow,
                     ),
                     Container(
                       height: MediaQuery.of(context).size.height,
