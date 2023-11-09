@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 
@@ -12,13 +14,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   late ScrollController _mainScrollController;
 
+  //애니메이션
+  bool isHover = false;
+  bool isHover1 = false;
+  bool isHover2 = false;
+  bool isHover3 = false;
+  bool isHover4 = false;
 
   @override
   void initState(){
     _mainScrollController = ScrollController();
     _mainScrollController.addListener(() {
-
-      print('offset: ${_mainScrollController.offset}');
 
       _mainScrollController.hasClients;
     });
@@ -102,10 +108,10 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width-300.0,
-              color: Colors.red,
               child: SingleChildScrollView(
                 controller: _mainScrollController,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
                       padding: EdgeInsets.only(left: 50.0),
@@ -186,7 +192,81 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width-300.0,
-                      color: Colors.red,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Container(),
+                          ),
+                          Expanded(
+                            flex: 49,
+                            child: Container(
+                              margin: EdgeInsets.only(left: 30.0),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text('Travel To ', style: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold, ),),
+                                      Text('Europe', style: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold, color: Color(0xFF2E3955)),),
+                                      SizedBox(width: 20.0,),
+                                      Text('~2023.09', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),)
+                                    ],
+                                  ),
+                                  SizedBox(height: 20.0,),
+                                  Row(
+                                    children: [
+                                      MyAnimatedContainer(),
+                                      MyAnimatedContainer(),
+                                      MyAnimatedContainer(),
+                                      MyAnimatedContainer(),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )
+                          ),
+                          Expanded(
+                            flex: 49,
+                            child: Container(
+                              margin: EdgeInsets.only(left: 30.0),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      SizedBox(width: 150.0,),
+                                      Text('Travel To ',style: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold),),
+                                      Text('Gyeong Ju', style: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold, color: Color(0xFF2E3955)),),
+                                      SizedBox(width: 20.0,),
+                                      Text('~2023.11', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),)
+                                    ],
+                                  ),
+                                  SizedBox(height: 20.0,),
+                                  Row(
+                                    children: [
+                                      Container(
+                                        width: 150.0,
+                                        height: 200.0,
+                                      ),
+                                      MyAnimatedContainer(),
+                                      MyAnimatedContainer(),
+                                      MyAnimatedContainer(),
+                                      MyAnimatedContainer(),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(),
+                          ),
+                        ],
+                      ),
                     ),
                     Container(
                       height: MediaQuery.of(context).size.height,
@@ -204,6 +284,47 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+
+
+}
+
+class MyAnimatedContainer extends StatefulWidget {
+  const MyAnimatedContainer({Key? key}) : super(key: key);
+
+  @override
+  State<MyAnimatedContainer> createState() => _MyAnimatedContainerState();
+}
+
+class _MyAnimatedContainerState extends State<MyAnimatedContainer> {
+
+  bool isHover = false;
+  String imageUrl = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (val){
+        setState(() {
+          isHover = true;
+        });
+      },
+      onExit: (val){
+        setState(() {
+          isHover = false;
+        });
+      },
+      child: AnimatedContainer(
+        margin: EdgeInsets.all(5.0),
+        padding: EdgeInsets.all(5.0),
+        width: isHover ? 200.0 : 150.0,
+        height: isHover ? 250.0 : 200.0,
+        duration: Duration(milliseconds: 150),
+        color: Colors.grey,
+        child: Image.asset(imageUrl),
       ),
     );
   }
