@@ -216,13 +216,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ],
                                   ),
                                   SizedBox(height: 20.0,),
-                                  Row(
-                                    children: [
-                                      MyAnimatedContainer(),
-                                      MyAnimatedContainer(),
-                                      MyAnimatedContainer(),
-                                      MyAnimatedContainer(),
-                                    ],
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      children: [
+                                        MyAnimatedContainer(),
+                                        MyAnimatedContainer(),
+                                        MyAnimatedContainer(),
+                                        MyAnimatedContainer(),
+                                      ],
+                                    ),
                                   )
                                 ],
                               ),
@@ -245,17 +248,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ],
                                   ),
                                   SizedBox(height: 20.0,),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        width: 150.0,
-                                        height: 200.0,
-                                      ),
-                                      MyAnimatedContainer(),
-                                      MyAnimatedContainer(),
-                                      MyAnimatedContainer(),
-                                      MyAnimatedContainer(),
-                                    ],
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: 150.0,
+                                          height: 200.0,
+                                        ),
+                                        MyAnimatedContainer(),
+                                        MyAnimatedContainer(),
+                                        MyAnimatedContainer(),
+                                        MyAnimatedContainer(),
+                                      ],
+                                    ),
                                   )
                                 ],
                               ),
@@ -271,12 +277,142 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width-300.0,
-                      color: Colors.yellow,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Container(),
+                          ),
+                          Expanded(
+                              flex: 98,
+                              child: Container(
+                                margin: EdgeInsets.only(left: 30.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        Text("Minseo's", style: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold, ),),
+                                        Text(' Portfolio', style: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold, color: Color(0xFF2E3955)),),
+                                      ],
+                                    ),
+                                    SizedBox(height: 20.0,),
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: [
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                        ],
+                                      ),
+                                    ),
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: [
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 30.0,),
+                                    Container(
+                                      child: Text(''),
+                                    ),
+                                  ],
+                                ),
+                              )
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(),
+                          ),
+                        ],
+                      ),
                     ),
                     Container(
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width-300.0,
-                      color: Colors.red,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Container(),
+                          ),
+                          Expanded(
+                              flex: 98,
+                              child: Container(
+                                margin: EdgeInsets.only(left: 30.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        Text("WHAT", style: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold, ),),
+                                        Text(' I LOVE', style: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold, color: Color(0xFF2E3955)),),
+                                      ],
+                                    ),
+                                    SizedBox(height: 20.0,),
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: [
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                        ],
+                                      ),
+                                    ),
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: [
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                          MyPortfolioContainer(),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 30.0,),
+                                    Container(
+                                      child: Text(''),
+                                    ),
+                                  ],
+                                ),
+                              )
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -329,3 +465,43 @@ class _MyAnimatedContainerState extends State<MyAnimatedContainer> {
     );
   }
 }
+
+
+class MyPortfolioContainer extends StatefulWidget {
+  const MyPortfolioContainer({Key? key}) : super(key: key);
+
+  @override
+  State<MyPortfolioContainer> createState() => _MyPortfolioContainerState();
+}
+
+class _MyPortfolioContainerState extends State<MyPortfolioContainer> {
+
+  bool isHover = false;
+  String imageUrl = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (val){
+        setState(() {
+          isHover = true;
+        });
+      },
+      onExit: (val){
+        setState(() {
+          isHover = false;
+        });
+      },
+      child: AnimatedContainer(
+        margin: EdgeInsets.all(5.0),
+        padding: EdgeInsets.all(5.0),
+        width: isHover ? 200.0 : 150.0,
+        height: isHover ? 200.0 : 150.0,
+        duration: Duration(milliseconds: 150),
+        color: Colors.grey,
+        child: Image.asset(imageUrl),
+      ),
+    );
+  }
+}
+
