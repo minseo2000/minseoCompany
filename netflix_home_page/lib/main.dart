@@ -10,7 +10,7 @@ import 'package:netflix_home_page/screen/selectProfileScreen.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: MainScreen()
+      home: LoginScreen()
     )
   );
 }

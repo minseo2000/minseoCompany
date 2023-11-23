@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_home_page/component/footerComponent.dart';
 import 'package:netflix_home_page/component/loginScreenAppBar.dart';
+import 'package:netflix_home_page/screen/selectProfileScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -293,7 +294,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   //로그인 버튼 반응함수
   void loginButton(){
-
+    Navigator.push(context, MaterialPageRoute(builder: (_)=>SelectProfileScreen()));
   }
   // 도움이 필요하신가요 버튼 함수
   void helpButton(){

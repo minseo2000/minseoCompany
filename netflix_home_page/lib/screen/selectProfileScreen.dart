@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_home_page/screen/mainScreen.dart';
 
 class SelectProfileScreen extends StatefulWidget {
   const SelectProfileScreen({Key? key}) : super(key: key);
@@ -59,7 +60,9 @@ class _SelectProfileScreenState extends State<SelectProfileScreen> {
 
   renderProfile(String name, String profileImgUrl){
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (_)=>MainScreen()));
+      },
       child: Column(
         children: [
           Container(
