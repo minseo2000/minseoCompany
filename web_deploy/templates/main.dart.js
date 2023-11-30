@@ -63088,7 +63088,7 @@ A.a2C.prototype={
 $0(){var s=0,r=A.W(t.H)
 var $async$$0=A.X(function(a,b){if(a===1)return A.T(b,r)
 while(true)switch(s){case 0:s=2
-return A.Y(A.a9S(A.f9("http://minseotest.iptime.org",0,null)),$async$$0)
+return A.Y(A.a9S(A.f9("http://minseotest.iptime.org:50000",0,null)),$async$$0)
 case 2:return A.U(null,r)}})
 return A.V($async$$0,r)},
 $S:28}
