@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:portfolio_page/screen/introMyselfScreen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -93,7 +94,9 @@ class _MainScreenState extends State<MainScreen> {
                                 Text('About Me_', style: TextStyle(fontSize: 30.0, color: Color(0xff66cdaa), fontWeight: FontWeight.bold),),
                               SizedBox(height: 50.0,),
                               InkWell(
-                                onTap: (){},
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (_)=>IntroMyselfScreen()));
+                                },
                                 child: Column(
                                   children: [
                                     Text('Resume', style: TextStyle(fontSize: 20.0, color: Color(0xff66cdaa), fontWeight: FontWeight.bold),),
