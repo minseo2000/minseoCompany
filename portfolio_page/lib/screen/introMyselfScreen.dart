@@ -13,14 +13,18 @@ class _IntroMyselfScreenState extends State<IntroMyselfScreen> {
 
 
   final List<String> homePageProjectImageList = [
-    'assets/img/homePageProjectImage/screen1.png',
-    'assets/img/homePageProjectImage/screen2.png',
-    'assets/img/homePageProjectImage/screen3.png',
-    'assets/img/homePageProjectImage/screen4.png',
+    'assets/img/screen1.png',
+    'assets/img/screen2.png',
+    'assets/img/screen3.png',
+    'assets/img/screen4.png',
   ];
   int _current = 0;
-  final CarouselController _controller = CarouselController();
+  late CarouselController _controller;
 
+  @override
+  void initState(){
+    _controller = CarouselController();
+  }
 
   @override
   Widget build(BuildContext context) {
