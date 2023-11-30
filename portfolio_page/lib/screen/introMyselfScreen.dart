@@ -191,8 +191,6 @@ class _IntroMyselfScreenState extends State<IntroMyselfScreen> {
                                       ),
                                     )
                                   )
-
-
                                 ],
                               ),
                             ),
@@ -240,12 +238,8 @@ class _IntroMyselfScreenState extends State<IntroMyselfScreen> {
             builder: (context) {
               return SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: Image(
-                  fit: BoxFit.fill,
-                  image: NetworkImage(
-                    imgLink,
-                  ),
-                ),
+                child: Image.asset(imgLink,
+                fit: BoxFit.fill,)
               );
             },
           );
