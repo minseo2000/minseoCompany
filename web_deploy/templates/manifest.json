@@ -1,11 +1,11 @@
 {
-    "name": "smart_company_homepage",
-    "short_name": "smart_company_homepage",
+    "name": "portfolio_page",
+    "short_name": "portfolio_page",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "homepage",
+    "description": "portfolio home page",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

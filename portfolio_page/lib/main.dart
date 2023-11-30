@@ -5,7 +5,7 @@ import 'package:portfolio_page/screen/mainScreen.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: IntroMyselfScreen()
+      home: MainScreen()
     )
   );
 }
