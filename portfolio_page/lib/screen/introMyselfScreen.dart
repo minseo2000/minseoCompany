@@ -12,12 +12,13 @@ class IntroMyselfScreen extends StatefulWidget {
 class _IntroMyselfScreenState extends State<IntroMyselfScreen> {
 
 
-  final List<String> homePageProjectImageList = [
+  List<String> homePageProjectImageList = [
     'assets/img/screen1.png',
     'assets/img/screen2.png',
     'assets/img/screen3.png',
     'assets/img/screen4.png',
   ];
+
   int _current = 0;
   late CarouselController _controller;
 
