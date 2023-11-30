@@ -128,7 +128,7 @@ class _IntroMyselfScreenState extends State<IntroMyselfScreen> {
                         children: [
                           InkWell(
                             onTap: () async{
-                              !await launchUrl(Uri.parse('http://minseotest.iptime.org'));
+                              !await launchUrl(Uri.parse('http://minseotest.iptime.org:50000'));
                             },
                             child: Container(
                               margin: EdgeInsets.all(10.0),
