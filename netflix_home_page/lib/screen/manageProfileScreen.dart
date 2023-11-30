@@ -44,7 +44,9 @@ class _ManageProfileScreenState extends State<ManageProfileScreen> {
                           color: Colors.grey
                       )
                   ),
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
                   child: const Text('완료', style: TextStyle(color: Colors.black, fontSize: 20.0),),
                 ),
               )

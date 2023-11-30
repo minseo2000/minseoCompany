@@ -88,7 +88,9 @@ class _AddNewProfileScreenState extends State<AddNewProfileScreen> {
                             color: Colors.grey
                           )
                         ),
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
                         child: Text('취소', style: TextStyle(color: Colors.grey),),
                       ),
                       width: 100.0,

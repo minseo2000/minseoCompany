@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_home_page/screen/addNewProfileScreen.dart';
 import 'package:netflix_home_page/screen/mainScreen.dart';
+import 'package:netflix_home_page/screen/manageProfileScreen.dart';
 
 class SelectProfileScreen extends StatefulWidget {
   const SelectProfileScreen({Key? key}) : super(key: key);
@@ -82,7 +84,9 @@ class _SelectProfileScreenState extends State<SelectProfileScreen> {
   }
   addProfile(){
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (_)=>AddNewProfileScreen()));
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -107,6 +111,6 @@ class _SelectProfileScreenState extends State<SelectProfileScreen> {
 
   // 프로필 관리 버튼 함수
   void manageProfileButton(){
-
+    Navigator.push(context, MaterialPageRoute(builder: (_)=> ManageProfileScreen()));
   }
 }
