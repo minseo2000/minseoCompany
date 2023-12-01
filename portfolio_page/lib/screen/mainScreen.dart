@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:portfolio_page/screen/customElements/customTweenText.dart';
 import 'package:portfolio_page/screen/introMyselfScreen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -19,6 +20,151 @@ class _MainScreenState extends State<MainScreen> {
 
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        onPressed: (){
+          showDialog(context: context, builder: (context){
+            return AlertDialog(
+              title: Text('Minseo 컴퍼니 챗봇'),
+              content: Container(
+                width: 400.0,
+                height: 500.0,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 9,
+                      child: Container(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: Column(
+                            children: [
+                              Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text('챗 봇'),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: [
+                                                  CustomTweenText(
+                                                    text: '안녕하세요! 박민서 고객님 무엇을 도와드릴까요?',
+                                                    style: TextStyle(),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          )
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text('챗 봇'),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: [
+                                                  CustomTweenText(
+                                                    text: '안녕하세요! 박민서 고객님 무엇을 도와드릴까요?',
+                                                    style: TextStyle(),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          )
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Expanded(
+                                          flex: 1,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            children: [
+                                              Text('고객님'),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.end,
+                                                children: [
+                                                ],
+                                              )
+                                            ],
+                                          )
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            fillColor: Color(0xff66cdaa),
+                            focusColor: Color(0xff66cdaa),
+                            hoverColor: Color(0xff66cdaa),
+                            labelText: '입력',
+                            hintText: '질문을 입력해주세요!',
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                width: 1,
+                                color: Color(0xff66cdaa),
+                              )
+                            ),
+                            hintStyle: TextStyle(
+                              color: Color(0xff66cdaa),
+                            ),
+                            labelStyle: TextStyle(
+                              color: Color(0xff66cdaa),
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(Icons.send, color: Color(0xff66cdaa),),
+                              onPressed: (){
+
+                              },
+                            )
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              ),
+            );
+          },
+          anchorPoint: Offset.lerp(
+            Offset(1, 1),
+            Offset(1, 1),
+            2.0
+            )
+          );
+        },
+        child: Text('Chat!', style: TextStyle(color: Color(0xff66cdaa),),),
+      ),
       backgroundColor: Color(0xff66cdaa),
       body: Container(
           width: MediaQuery.of(context).size.width,
@@ -149,6 +295,11 @@ class _MainScreenState extends State<MainScreen> {
         _selected = false;
       });
     });
+
+  }
+
+
+  renderChatBot(){
 
   }
 }
