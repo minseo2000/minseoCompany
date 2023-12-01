@@ -1,0 +1,131 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x0000000169d34938, pid=5974, tid=26371
+#
+# JRE version: OpenJDK Runtime Environment Zulu15.46+17-CA (15.0.10+5) (build 15.0.10+5-MTS)
+# Java VM: OpenJDK 64-Bit Server VM Zulu15.46+17-CA (15.0.10+5-MTS, mixed mode, tiered, compressed oops, g1 gc, bsd-aarch64)
+# Problematic frame:
+# V  [libjvm.dylib+0x27c938]  State::_sub_Op_AddP(Node const*)+0x0
+#
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://www.azul.com/support/
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dfile.encoding=UTF8 -ea -Xmx1024m 
+
+Host: Mac14,6 arm64 1 MHz, 12 cores, 32G, Darwin 23.0.0
+Time: Fri Dec  1 14:21:13 2023 KST elapsed time: 0.020868 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000016f0d8400):  JavaThread "C2 CompilerThread0" daemon [_thread_in_vm, id=26371, stack(0x00000002935c0000,0x00000002937c3000)]
+
+Stack: [0x00000002935c0000,0x00000002937c3000],  sp=0x00000002937c0190,  free space=2048k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.dylib+0x27c938]  State::_sub_Op_AddP(Node const*)+0x0
+V  [libjvm.dylib+0x692ef0]  Matcher::Label_Root(Node const*, State*, Node*, Node*&)+0x428
+V  [libjvm.dylib+0x692eb0]  Matcher::Label_Root(Node const*, State*, Node*, Node*&)+0x3e8
+V  [libjvm.dylib+0x692eb0]  Matcher::Label_Root(Node const*, State*, Node*, Node*&)+0x3e8
+V  [libjvm.dylib+0x692eb0]  Matcher::Label_Root(Node const*, State*, Node*, Node*&)+0x3e8
+V  [libjvm.dylib+0x68ed7c]  Matcher::match_tree(Node const*)+0xac
+V  [libjvm.dylib+0x68eb5c]  Matcher::xform(Node*, int)+0x63c
+V  [libjvm.dylib+0x68da44]  Matcher::match()+0x78c
+V  [libjvm.dylib+0x22b63c]  Compile::Code_Gen()+0x9c
+V  [libjvm.dylib+0x22c158]  Compile::Compile(ciEnv*, TypeFunc const* (*)(), unsigned char*, char const*, int, bool, bool, bool, DirectiveSet*)+0x3ec
+V  [libjvm.dylib+0x797394]  OptoRuntime::generate_stub(ciEnv*, TypeFunc const* (*)(), unsigned char*, char const*, int, bool, bool, bool)+0xb0
+V  [libjvm.dylib+0x796fbc]  OptoRuntime::generate(ciEnv*)+0x44
+V  [libjvm.dylib+0x19ff0c]  C2Compiler::initialize()+0xfc
+V  [libjvm.dylib+0x239268]  CompileBroker::init_compiler_runtime()+0x148
+V  [libjvm.dylib+0x239918]  CompileBroker::compiler_thread_loop()+0x1cc
+V  [libjvm.dylib+0x8cb6ac]  JavaThread::thread_main_inner()+0xa0
+V  [libjvm.dylib+0x8c8ba8]  Thread::call_run()+0x88
+V  [libjvm.dylib+0x711f3c]  thread_native_entry(Thread*)+0x1d0
+C  [libsystem_pthread.dylib+0x7034]  _pthread_start+0x88
+
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 2 (SEGV_ACCERR), si_addr: 0x0000000169d34938
+
+Register to memory mapping:
+
+ x0=0x000000016f863d90 points into unknown readable memory: 0x0000000000000000 | 00 00 00 00 00 00 00 00
+ x1=0x000000016f8515e0 points into unknown readable memory: 0x000000016a523cc8 | c8 3c 52 6a 01 00 00 00
+ x2=0x000000016f8515e0 points into unknown readable memory: 0x000000016a523cc8 | c8 3c 52 6a 01 00 00 00
+ x3=0x0000000000000010 is an unknown value
+ x4=0x0000000169e76e48 is pointing into the stack for thread: 0x0000000144776c00
+ x5=0x0000000000000001 is an unknown value
+ x6=0x000000016f85b430 points into unknown readable memory: 0x000000016a4c9148 | 48 91 4c 6a 01 00 00 00
+ x7=0x0 is NULL
+ x8=0x0000000000000015 is an unknown value
+ x9=0x000000016a4199e2 is pointing into the stack for thread: 0x0000000144776c00
+x10=0x0000000169d5b2ac is pointing into the stack for thread: 0x0000000144776c00
+x11=0x00000000000000fd is an unknown value
+x12=0x0000000000000009 is an unknown value
+x13=0x0000000000000003 is an unknown value
+x14=0x000000016f85b578 points into unknown readable memory: 0x0000000000000000 | 00 00 00 00 00 00 00 00
+x15=0x000000016f851918 points into unknown readable memory: 0x000000016f851950 | 50 19 85 6f 01 00 00 00
+x16=0x000000018d4c2db8: bsearch+0 in /usr/lib/system/libsystem_c.dylib at 0x000000018d4bc000
+x17=0x00000002937c3000 points into unknown readable memory: 0xf5b399fdaa716ffe | fe 6f 71 aa fd 99 b3 f5
+x18=0x0 is NULL
+x19=0x000000016f863d90 points into unknown readable memory: 0x0000000000000000 | 00 00 00 00 00 00 00 00
+x20=0x000000016f8515e0 points into unknown readable memory: 0x000000016a523cc8 | c8 3c 52 6a 01 00 00 00
+x21=0x0000000000000017 is an unknown value
+x22=0x000000016f863ee8 points into unknown readable memory: 0x0000000000000000 | 00 00 00 00 00 00 00 00
+x23=0x00000002937c0ae0 is pointing into the stack for thread: 0x000000016f0d8400
+x24=0x0000000000000002 is an unknown value
+x25=0x0000000000000004 is an unknown value
+x26=0x000000016f851598 points into unknown readable memory: 0x000000016a52ace0 | e0 ac 52 6a 01 00 00 00
+x27=0x000000016f865490 points into unknown readable memory: 0x0000000000000000 | 00 00 00 00 00 00 00 00
+x28=0x0000000000000004 is an unknown value
+
+
+Registers:
+ x0=0x000000016f863d90  x1=0x000000016f8515e0  x2=0x000000016f8515e0  x3=0x0000000000000010
+ x4=0x0000000169e76e48  x5=0x0000000000000001  x6=0x000000016f85b430  x7=0x0000000000000000
+ x8=0x0000000000000015  x9=0x000000016a4199e2 x10=0x0000000169d5b2ac x11=0x00000000000000fd
+x12=0x0000000000000009 x13=0x0000000000000003 x14=0x000000016f85b578 x15=0x000000016f851918
+x16=0x000000018d4c2db8 x17=0x00000002937c3000 x18=0x0000000000000000 x19=0x000000016f863d90
+x20=0x000000016f8515e0 x21=0x0000000000000017 x22=0x000000016f863ee8 x23=0x00000002937c0ae0
+x24=0x0000000000000002 x25=0x0000000000000004 x26=0x000000016f851598 x27=0x000000016f865490
+x28=0x0000000000000004  fp=0x00000002937c01c0  lr=0x0000000169d5b2b8  sp=0x00000002937c0190
+pc=0x0000000169d34938 cpsr=0x0000000080001000
+Top of Stack: (sp=0x00000002937c0190)
+0x00000002937c0190:   0000000000000002 00000002937c0ae0
+0x00000002937c01a0:   0000000000000002 000000016f850f78
+0x00000002937c01b0:   0000000000000000 000000016f8515e0
+0x00000002937c01c0:   00000002937c0240 000000016a14aef0
+0x00000002937c01d0:   0000000000000000 00000002937c1468
+0x00000002937c01e0:   00000002937c03d0 000000016f863d90
+0x00000002937c01f0:   0000000000000003 000000016f863d90
+0x00000002937c0200:   000000016f8515e0 0000000000000002
+0x00000002937c0210:   0000000000000001 00000002937c0ae0
+0x00000002937c0220:   0000000000000000 000000016f850f78
+0x00000002937c0230:   0000000000000000 000000016f851698
+0x00000002937c0240:   00000002937c02c0 000000016a14aeb0
+0x00000002937c0250:   0000000100000000 00000002937c1468
+0x00000002937c0260:   00000002937c03d0 000000016f863210
+0x00000002937c0270:   0000000000000003 000000016f863210
+0x00000002937c0280:   000000016f851698 0000000000000001
+0x00000002937c0290:   0000000000000001 00000002937c0ae0
+0x00000002937c02a0:   0000000000000000 000000016f850f78
+0x00000002937c02b0:   000000016f851518 000000016f851718
+0x00000002937c02c0:   00000002937c0340 000000016a14aeb0
+0x00000002937c02d0:   00000002937c0300 00000002937c1468
+0x00000002937c02e0:   00000002937c03d0 000000016f85a140
+0x00000002937c02f0:   0000000000000003 000000016f85a140
+0x00000002937c0300:   000000016f851718 0000000000000002
+0x00000002937c0310:   0000000000000002 00000002937c0ae0
+0x00000002937c0320:   0000000000000000 000000016f850f78
+0x00000002937c0330:   0000000000000000 000000016f8517f0
+0x00000002937c0340:   00000002937c03c0 000000016a14aeb0
+0x00000002937c0350:   00000002937c2528 00000002937c1468
+0x00000002937c0360:   00000002937c03d0 000000016f858a40
+0x00000002937c0370:   0000000000000001 000000016f85b1e8
+0x00000002937c0380:   000000016f858a40 000000016f858a40 
+
+Instructions: (pc=0x0000000169d34938)
+0x0000000169d34838:   
