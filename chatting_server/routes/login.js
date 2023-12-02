@@ -21,7 +21,6 @@ router.get('/', (req, res) => {
 
 });
 
-
 router.post('/login', async(req, res) => {
     const id = req.body.id;
     const password = sha(req.body.password);

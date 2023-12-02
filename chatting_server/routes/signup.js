@@ -6,7 +6,7 @@ const sha = require('sha256');
 const {queryDatabase} = require('./db');
 const { generatePrimeSync } = require('crypto');
 
-/*
+
 router.post('/signup', async(req, res) => {
 
     const id = req.body.id;
@@ -32,6 +32,6 @@ router.post('/signup', async(req, res) => {
         res.status(500).json();
     }
 });
-*/
+
 
 module.exports = router;

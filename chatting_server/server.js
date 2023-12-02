@@ -18,7 +18,7 @@ app.get('/',login);
 app.post('/login', login);
 
 app.get('/chat', (req, res) => {
-    res.render('chat');
+    res.sendFile(path.join(__dirname, './views/index.html'));
 
 })
 io.on('connection', (socket) => {
