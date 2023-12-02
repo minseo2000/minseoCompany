@@ -12,6 +12,8 @@ class IntroMyselfScreen extends StatefulWidget {
 class _IntroMyselfScreenState extends State<IntroMyselfScreen> {
 
 
+  int _current = 0;
+  late CarouselController _controller;
   List<String> homePageProjectImageList = [
     'assets/img/screen1.png',
     'assets/img/screen2.png',
@@ -19,12 +21,20 @@ class _IntroMyselfScreenState extends State<IntroMyselfScreen> {
     'assets/img/screen4.png',
   ];
 
-  int _current = 0;
-  late CarouselController _controller;
+  int _current2 = 0;
+  List<String> gameImageList = [
+    'assets/img/game.png',
+    'assets/img/game2.png',
+    'assets/img/game3.png',
+  ];
+  late CarouselController _controller2;
+
+
 
   @override
   void initState(){
     _controller = CarouselController();
+    _controller2 = CarouselController();
   }
 
   @override
@@ -182,14 +192,132 @@ class _IntroMyselfScreenState extends State<IntroMyselfScreen> {
                                     child: ClipRRect(
                                       child: Stack(
                                         children: [
-                                          sliderWidget(),
-                                          sliderIndicator(),
+                                          sliderWidget(
+                                            _controller,
+                                            homePageProjectImageList,
+                                            _current
+                                          ),
+                                          sliderIndicator(
+                                            _current
+                                          ),
                                         ],
                                       ),
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(10.0)
                                       ),
                                     )
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () async{
+                              showDialog(context: context, builder: (_){
+                                return AlertDialog(
+                                  title: Text('게임을 플레이 해보세요!'),
+                                  content: Container(
+                                    width: 300.0,
+                                    height: 100.0,
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          flex: 1,
+                                          child: Container(
+                                            padding: EdgeInsets.all(20.0),
+                                            child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor: Color(0xff66cdaa)
+                                              ),
+                                              onPressed: () async {
+                                                !await launchUrl(Uri.parse('https://play.google.com/store/apps/details?id=minseo.game.cat'));
+                                              },
+                                              child: Text('Play Store'),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Container(
+                                            padding: EdgeInsets.all(20.0),
+                                            child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: Color(0xff66cdaa)
+                                              ),
+                                              onPressed: () async {
+                                                !await launchUrl(Uri.parse('https://apps.apple.com/us/app/%ED%85%8C%ED%8A%B8%EB%A6%AC%EC%8A%A4%EA%B3%A0%EC%96%91%EC%9D%B4/id6446885729'));
+                                              },
+                                              child: Text('App Store'),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              });
+                            },
+                            child: Container(
+                              margin: EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 0.5,
+                                      color: Colors.grey
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0)
+                              ),
+                              width: 300.0,
+                              height: 200.0,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 10.0,),
+                                  Text('고양이 테트리스 게임', style: TextStyle(fontSize: 15.0, color: Colors.grey),),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        top: 15.0,
+                                        left: 20.0,
+                                        right: 20.0
+                                    ),
+                                    width: MediaQuery.of(context).size.width - 100.0,
+                                    height: 0.5,
+                                    color: Colors.grey,
+
+                                  ),
+                                  SizedBox(height: 10.0,),
+                                  Container(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text('테트리스 게임을 만들었습니다.', style: TextStyle(fontSize: 10.0, color: Colors.grey),)
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                      padding: EdgeInsets.only(
+                                          top: 20.0,
+                                          left: 20.0,
+                                          right: 20.0
+                                      ),
+                                      width: 300.0,
+                                      height: 120.0,
+                                      child: ClipRRect(
+                                        child: Stack(
+                                          children: [
+                                            sliderWidget(
+                                              _controller2,
+                                              gameImageList,
+                                              _current2
+                                            ),
+                                            sliderIndicator(
+                                              _current2
+                                            ),
+                                          ],
+                                        ),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10.0)
+                                        ),
+                                      )
                                   )
                                 ],
                               ),
@@ -229,17 +357,17 @@ class _IntroMyselfScreenState extends State<IntroMyselfScreen> {
     );
   }
 
-  Widget sliderWidget() {
+  Widget sliderWidget(CarouselController _controller, List<String> items, int _current) {
     return CarouselSlider(
       carouselController: _controller,
-      items: homePageProjectImageList.map(
+      items: items.map(
             (imgLink) {
           return Builder(
             builder: (context) {
               return SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Image.asset(imgLink,
-                fit: BoxFit.fill,)
+                fit: BoxFit.fitHeight,)
               );
             },
           );
@@ -259,7 +387,7 @@ class _IntroMyselfScreenState extends State<IntroMyselfScreen> {
     );
   }
 
-  Widget sliderIndicator() {
+  Widget sliderIndicator(int _current) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Row(
