@@ -17,10 +17,7 @@ app.set('view engine', 'ejs');
 app.get('/',login);
 app.post('/login', login);
 
-app.get('/chat', (req, res) => {
-    res.sendFile(path.join(__dirname, './views/index.html'));
-
-})
+app.get('/chat', chat)
 io.on('connection', (socket) => {
     console.log('클라이언트 연결');
 
