@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 router.post('/login', async(req, res) => {
     const id = req.body.id;
     const password = sha(req.body.password);
-    const query = 'select  password from userstate where id = @id';
+    const query = 'select  password from user_info where id = @id';
    
     try{
         const result = await queryDatabase(query, {id});

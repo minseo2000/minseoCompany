@@ -13,7 +13,7 @@ router.post('/signup', async(req, res) => {
 
 
     try {
-                const query = 'INSERT INTO userstate (id, password) VALUES (@id, @password)'
+                const query = 'INSERT INTO user_info (id, password) VALUES (@id, @password)'
                 const result = await queryDatabase(query, {
                     id : id,
                     password : password,
