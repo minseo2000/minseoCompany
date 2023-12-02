@@ -13,3 +13,5 @@ const sessionStore = new MemoryStore();
 router.get('/chat', (req, res)=>{
     res.render('chat');
 });
+
+module.exports = router;
