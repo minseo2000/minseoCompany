@@ -16,7 +16,7 @@ const config = {
 
 const dbConnection = new ConnectionPool(config)
     .connect()
-    .then((당구) => {
+    .then((pool) => {
         console.log('connection complete');
         return pool;
     })
