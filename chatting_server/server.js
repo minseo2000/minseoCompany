@@ -5,6 +5,7 @@ const io = require('socket.io')(server);
 const path = require('path');
 const {queryDatabase} = require('./routes/db')
 const login = require('./routes/login');
+const chat = require('./routes/chat');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended:true}));
