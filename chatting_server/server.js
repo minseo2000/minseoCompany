@@ -5,7 +5,6 @@ const io = require('socket.io')(server);
 const path = require('path');
 const {queryDatabase} = require('./routes/db')
 const login = require('./routes/login');
-const chat = require('./routes/chat');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -18,8 +17,10 @@ app.set('view engine', 'ejs');
 app.get('/',login);
 app.post('/login', login);
 
-app.get('/chat', chat);
+app.get('/chat', (req, res) => {
+    res.sendFile(path.join(__dirname, './views/chat.ejs'));
 
+})
 io.on('connection', (socket) => {
     console.log('클라이언트 연결');
 
