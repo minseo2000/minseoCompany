@@ -46,6 +46,6 @@ io.on('connection', (socket) => {
 
 })
 
-server.listen(8080, function(){
-    console.log(' 8000포트에서 실행중');
+server.listen(50020, function(){
+    console.log(' 50020포트에서 실행중');
 })
