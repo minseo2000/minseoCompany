@@ -18,7 +18,8 @@ app.set('view engine', 'ejs');
 app.get('/',login);
 app.post('/login', login);
 
-app.get('/chat', chat)
+app.get('/chat', chat);
+
 io.on('connection', (socket) => {
     console.log('클라이언트 연결');
 
