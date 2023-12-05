@@ -1,0 +1,53 @@
+.movie-list-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.movie-list {
+    display: flex;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 10px;
+    scrollbar-width: none;
+    height: 250px;
+}
+.movie-list::-webkit-scrollbar {
+    display: none; /* 스크롤바 숨기기 */
+}
+
+.movie-info {
+    background-color: red;
+    width: 341px;
+    height: 192px;
+
+    flex: 0 0 auto; /* flex-grow, flex-shrink, flex-basis */
+    margin-right: 10px; /* 아이템 간 간격 */
+    transition: transform 0.3s ease;
+}
+
+.scroll-button {
+    width: 70px;
+    height: 100%;
+    padding-bottom: 50px;
+    border: none;
+    position: absolute; /* 절대 위치 설정 */
+    z-index: 2; /* 아이템들 위에 위치하도록 z-index 설정 */
+    background-color: rgba(0, 0, 0, 0);
+    outline: none;
+}
+.scroll-button img {
+    width: 40%;
+    filter: invert(100%);
+}
+.scroll-button:hover {
+    background-color: rgba(0, 0, 0, 0.277);
+}
+#left.scroll-button {
+    left: 0; /* 왼쪽 정렬 */
+}
+#right.scroll-button {
+    right: 0; /* 오른쪽 정렬 */
+}
