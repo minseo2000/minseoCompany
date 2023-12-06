@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, abort
+from flask_cors import CORS
 import socket
 import json
 
@@ -8,7 +9,7 @@ port = 50042  # 챗봇 엔진 서버 통신 포트
 
 # Flask 어플리케이션
 app = Flask(__name__)
-
+CORS(app)
 
 # 챗봇 엔진 서버와 통신
 def get_answer_from_engine(bottype, query):
