@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         print(token);
                         _passwordController.clear();
                         _usernameController.clear();
-                        n.fetchData(LOGIN_SERVER_URL+'/ping');
+                        n.fetchData(LOGIN_SERVER_URL+'/api/protected');
                       },
                       child: Text('로그인'),
                       style: ElevatedButton.styleFrom(
@@ -116,6 +116,7 @@ class NetworkService {
       },);
 
     if (response.statusCode == 200) {
+      _authToken = response.data['access_token'];
       return response.data;
     } else {
       // 로그인 실패 처리

@@ -55,8 +55,8 @@ def login():
     else:
         return jsonify({'message': '잘못된 사용자 이름 또는 비밀번호'}), 401
 
-@jwt_required()
 @app.route('/ping', methods=['GET'])
+@jwt_required()
 def ping():
     return 'pong'
 
