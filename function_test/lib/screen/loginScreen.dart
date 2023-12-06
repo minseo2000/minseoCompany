@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         print(token);
                         _passwordController.clear();
                         _usernameController.clear();
-                        n.fetchData(LOGIN_SERVER_URL+'/register');
+                        n.fetchData(LOGIN_SERVER_URL+'/ping');
                       },
                       child: Text('로그인'),
                       style: ElevatedButton.styleFrom(
