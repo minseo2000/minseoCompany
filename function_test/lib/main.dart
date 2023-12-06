@@ -5,6 +5,10 @@ void main() {
   runApp(
     MaterialApp(
       home: LoginScreen(),
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+        visualDensity: VisualDensity.adaptivePlatformDensity
+      ),
     )
   );
 }

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, session
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -44,15 +44,20 @@ def register():
 @app.route('/api/login', methods=['POST'])
 def login():
     data = request.json
-    username = data.get('username')
-    password = data.get('password')
+    username = data.get('username', None)
+    password = data.get('password', None)
 
     user = User.query.filter_by(username=username).first()
     if user and user.check_password(password):
         access_token = create_access_token(identity=username)
+        session['username'] = username
         return jsonify(access_token=access_token), 200
+    else:
+        return jsonify({'message': '잘못된 사용자 이름 또는 비밀번호'}), 401
+@app.route('/ping', methods=['GET'])
+def ping():
+    return 'pong'
 
-    return jsonify({'message': '잘못된 사용자 이름 또는 비밀번호'}), 401
 
 @app.route('/api/protected', methods=['GET'])
 @jwt_required()

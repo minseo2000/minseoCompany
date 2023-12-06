@@ -1,0 +1,1 @@
+String LOGIN_SERVER_URL = 'http://minseotest.iptime.org:50030';
