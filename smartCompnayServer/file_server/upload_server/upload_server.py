@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
@@ -32,6 +32,16 @@ def upload_file():
 def getFileLists():
     fileList = os.listdir('../../../../../../../work/')  # 현재 폴더의 파일 목록을 가져옵니다.
     return jsonify(fileList)
+
+
+@app.route('/download', methods=['GET'])
+def downloadFile():
+    fileDir = request.args.get('filepath', '')  # 쿼리 파라미터에서 'filepath' 값을 가져옵니다.
+
+    if os.path.isfile(fileDir):  # 파일 경로가 유효한지 확인합니다.
+        return send_file(fileDir, as_attachment=True)
+    else:
+        return {"error": "유효하지 않은 파일 경로입니다."}, 400
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=51000)
