@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
-
+CORS(app)
 # 파일이 저장될 경로 설정
 UPLOAD_FOLDER = '../../../../work/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
