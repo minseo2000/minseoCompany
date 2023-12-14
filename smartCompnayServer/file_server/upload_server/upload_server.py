@@ -28,6 +28,11 @@ def upload_file():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         return jsonify({'message': '파일 업로드 성공', 'filename': filename}), 200
 
+@app.route('/fileList', methods=['GET'])
+def getFileLists():
+    fileList = os.listdir(os.getcwd()+'../../../../../../../work/')  # 현재 폴더의 파일 목록을 가져옵니다.
+    return jsonify(fileList)
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=51000)
 else:
