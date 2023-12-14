@@ -36,8 +36,8 @@ def getFileLists():
 
 @app.route('/download', methods=['GET'])
 def downloadFile():
-    fileDir = request.args.get('filepath', '')  # 쿼리 파라미터에서 'filepath' 값을 가져옵니다.
-
+    fileDir = request.args.get('filepath')  # 쿼리 파라미터에서 'filepath' 값을 가져옵니다.
+    fileDir = '../../../../../../../work/'+fileDir
     if os.path.isfile(fileDir):  # 파일 경로가 유효한지 확인합니다.
         return send_file(fileDir, as_attachment=True)
     else:
