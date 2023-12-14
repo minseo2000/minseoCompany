@@ -30,7 +30,7 @@ def upload_file():
 
 @app.route('/fileList', methods=['GET'])
 def getFileLists():
-    fileList = os.listdir(os.getcwd()+'../../../../../../../work/')  # 현재 폴더의 파일 목록을 가져옵니다.
+    fileList = os.listdir('../../../../../../../work/')  # 현재 폴더의 파일 목록을 가져옵니다.
     return jsonify(fileList)
 
 if __name__ == '__main__':
