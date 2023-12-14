@@ -10,8 +10,8 @@ void main() {
       title: 'Order Platform',
       getPages: [
         GetPage(name: '/', page: () => LoginScreen()),
-        GetPage(name: '/home', page: () => HomeScreen()),
-        GetPage(name: '/orderList', page: ()=>OrderListScreen())
+        //GetPage(name: '/home', page: () => HomeScreen()),
+        //GetPage(name: '/orderList', page: ()=>OrderListScreen())
       ],
       initialRoute: '/',
     )
