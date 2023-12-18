@@ -17,7 +17,7 @@ def upload_file():
     file_name = secure_filename(file.filename)
 
     # 업로드된 파일을 저장할 경로 설정
-    target_path = os.path.join('uploads', file_name)
+    target_path = os.path.join(UPLOAD_FOLDER, file_name)
 
     # 파일이 처음 업로드되는 경우 새 파일을 생성
     if start == 0:
