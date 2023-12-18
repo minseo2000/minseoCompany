@@ -9,24 +9,26 @@ CORS(app)
 UPLOAD_FOLDER = '../../../../../../../work/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    # 파일이 요청에 있는지 확인
-    if 'file' not in request.files:
-        return jsonify({'message': '파일이 요청에 없습니다.'}), 400
-
     file = request.files['file']
+    start = request.form.get('start', type=int)
+    file_name = secure_filename(file.filename)
 
-    # 파일 이름이 비어있는지 확인
-    if file.filename == '':
-        return jsonify({'message': '파일 이름이 없습니다.'}), 400
+    # 업로드된 파일을 저장할 경로 설정
+    target_path = os.path.join('uploads', file_name)
 
-    if file:
-        # 안전한 파일 이름을 생성
-        filename = secure_filename(file.filename)
-        # 파일 저장
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return jsonify({'message': '파일 업로드 성공', 'filename': filename}), 200
+    # 파일이 처음 업로드되는 경우 새 파일을 생성
+    if start == 0:
+        with open(target_path, 'wb') as f:
+            f.write(file.read())
+    else:
+        # 기존 파일에 청크 추가
+        with open(target_path, 'ab') as f:
+            f.write(file.read())
+
+    return {'status': 'success', 'message': f'Chunk starting at {start} uploaded'}
 
 @app.route('/fileList', methods=['GET'])
 def getFileLists():
