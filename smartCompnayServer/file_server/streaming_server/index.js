@@ -3,9 +3,9 @@ const fs = require("fs");
 
 const app = express();
 const port = 50011;
-
+const cors = require("cors");
 app.use(express.static("public"));
-
+app.use(cors());
 // 파일 경로를 '/video/:fileName' 형식으로 받음
 app.get("/video/:fileName", (req, res) => {
     const fileName = req.params.fileName;
