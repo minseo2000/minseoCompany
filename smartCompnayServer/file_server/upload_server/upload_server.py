@@ -36,7 +36,7 @@ def getFileLists():
     return jsonify(fileList)
 
 @app.route('/fileListImages', methods=['GET'])
-def getFileLists():
+def getFileLists2():
     fileList = os.listdir('../../../../../../../work/images/')  # 현재 폴더의 파일 목록을 가져옵니다.
     return jsonify(fileList)
 
