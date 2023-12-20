@@ -35,6 +35,11 @@ def getFileLists():
     fileList = os.listdir('../../../../../../../work/')  # 현재 폴더의 파일 목록을 가져옵니다.
     return jsonify(fileList)
 
+@app.route('/fileListImages', methods=['GET'])
+def getFileLists():
+    fileList = os.listdir('../../../../../../../work/images/')  # 현재 폴더의 파일 목록을 가져옵니다.
+    return jsonify(fileList)
+
 
 @app.route('/download', methods=['GET'])
 def downloadFile():
