@@ -18,7 +18,7 @@ def connect_to_database(host,user,password,database,):
 def makeServicesTable(connector):
     sql = '''
         create table services_table(
-    service_id int primary key auto increment,
+    service_id int primary key auto_increment,
     service_name varchar(255) not null,
     service_img_url varchar(255) not null,
     service_url varchar(255) not null
