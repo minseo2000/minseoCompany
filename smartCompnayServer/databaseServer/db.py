@@ -48,7 +48,7 @@ def showTables(connector):
             for row in result:
                 print(row)
     except pymysql.MySQLError as e:
-        print("테이블 조회 실패", e)
+        print("테이블 목록 조회 실패", e)
         return None
     finally:
         cursor.close()
@@ -67,7 +67,7 @@ def showTableContent(connector, tableName):
             for row in result:
                 print(row)
     except pymysql.MySQLError as e:
-        print("테이블 조회 실패", e)
+        print(f"{tableName} 조회 실패", e)
         return None
     finally:
         cursor.close()
@@ -90,9 +90,16 @@ def main():
         while info != 2:
             print('1: services Table 생성하기')
             print('2: DB서버 종료하기')
+            print('3: table 목록 보기')
+            print('4: table 조회하기')
             info = int(input('수행할 작업의 수를 입력해주세요: '))
             if info == 1:
                 makeServicesTable(connection)
+            elif info == 3:
+                showTables(connection)
+            elif info == 4:
+                table_name = input('테이블 이름을 입력하세요: ')
+                showTableContent(connection, table_name)
 
         connection.close()
 
