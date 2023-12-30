@@ -70,6 +70,25 @@ def showTableContent(connector, tableName):
     finally:
         cursor.close()
 
+def describeTable(connector, tableName):
+    sql = f'''
+                    describe {tableName};
+                '''
+    try:
+        with connector.cursor() as cursor:
+            cursor.execute(sql)
+            result = cursor.fetchall()
+
+            # 결과를 출력합니다.
+            for row in result:
+                print(row)
+    except pymysql.MySQLError as e:
+        print(f"{tableName} 조회 실패", e)
+        return None
+    finally:
+        cursor.close()
+
+
 def main():
     # 데이터베이스에 연결
     print('DB 정보를 입력해주세요')
@@ -90,6 +109,7 @@ def main():
             print('2: DB서버 종료하기')
             print('3: table 목록 보기')
             print('4: table 조회하기')
+            print('5: table 속성 조회하기')
             info = int(input('수행할 작업의 수를 입력해주세요: '))
             if info == 1:
                 makeServicesTable(connection)
@@ -98,7 +118,9 @@ def main():
             elif info == 4:
                 table_name = input('테이블 이름을 입력하세요: ')
                 showTableContent(connection, table_name)
-
+            elif info == 5:
+                table_name = input('테이블 이름을 입력하세요: ')
+                describeTable(connection, table_name)
         connection.close()
 
 
