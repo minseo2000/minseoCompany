@@ -37,7 +37,7 @@ def makeServicesTable(connector):
 def main():
     # 데이터베이스에 연결
     print('DB 정보를 입력해주세요')
-    host, username, password, database, port = input('host, username, password, database 순으로 입력.').split(' ')
+    host, username, password, database = input('host, username, password, database 순으로 입력.').split(' ')
     connection = connect_to_database(
         host = host,
         user = username,
