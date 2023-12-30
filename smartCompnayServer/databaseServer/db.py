@@ -37,7 +37,6 @@ def makeServicesTable(connector):
 def showTables(connector):
     sql = '''
             show tables;
-    );
         '''
     try:
         with connector.cursor() as cursor:
@@ -56,7 +55,6 @@ def showTables(connector):
 def showTableContent(connector, tableName):
     sql = f'''
                 select * from {tableName};
-        );
             '''
     try:
         with connector.cursor() as cursor:
