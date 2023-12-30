@@ -77885,11 +77885,11 @@ this.w=this.tU()},
 N(a){var s,r,q=this,p=null,o=A.kd("Main Center",p,p,p,A.j5(p,p,B.j,p,p,p,p,p,p,p,p,p,p,p,p,p,p,!0,p,p,p,p,p,p,p,p),p,p)
 if(q.f){s=q.e
 s===$&&A.a()
-s=new A.yu(s,new A.GR(180,50),p)}else s=new A.q4(new A.mF("images/siri.gif",p,p),p)
+s=new A.yu(s,new A.GR(180,50),p)}else s=new A.q4(new A.mF("siri.gif",p,p),p)
 s=A.b([A.nf(p,s,B.at,!1,p,p,p,p,p,p,p,p,p,p,p,p,p,p,new A.ad9(q),p,p,p),A.k9(p,p,50)],t.E)
 r=q.w
 r===$&&A.a()
-return new A.y_(new A.u5(new A.vR(new A.dg(p,new A.pD(new A.mF("images/minseoIcon.png",p,p),p,p,p,B.a3,p,B.c6,!1),p,p,p,p,B.b2),p),o,s,B.l,new A.Q3(p,p,1/0,56),p),new A.pX(r,new A.ada(q),p,t.Am),A.aoq(A.kd("Add\nService",p,p,p,p,B.fZ,p),!1,new A.adb(q,a)),p)},
+return new A.y_(new A.u5(new A.vR(new A.dg(p,new A.pD(new A.mF("minseoIcon.png",p,p),p,p,p,B.a3,p,B.c6,!1),p,p,p,p,B.b2),p),o,s,B.l,new A.Q3(p,p,1/0,56),p),new A.pX(r,new A.ada(q),p,t.Am),A.aoq(A.kd("Add\nService",p,p,p,p,B.fZ,p),!1,new A.adb(q,a)),p)},
 tU(){var s=0,r=A.V(t.z),q,p,o,n,m,l
 var $async$tU=A.W(function(a,b){if(a===1)return A.S(b,r)
 while(true)switch(s){case 0:o=new A.Xk($,new A.H2(A.b([B.yS],t.i6)),$,new A.V2(A.aFx()),!1)
@@ -77932,7 +77932,7 @@ s.d=A.b([],r)
 for(q=0;q<5;++q){p=s.d
 o=new A.aB(20,20)
 n=A.jv(m,A.kd("\uc11c\ube44\uc2a4 \uc774\ub984",m,m,m,new A.r(!0,m,m,m,m,m,20,B.il,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m),m,m),B.w,m,m,m,m,m,new A.aI(0,10,0,10),m)
-p.push(A.nf(m,A.jv(m,A.F0(A.b([new A.vi(2,B.ih,n,m),new A.vi(8,B.ih,A.jv(m,new A.q4(A.aAL(m,m,new A.mF("images/minseoIcon.png",m,m)),m),B.w,m,m,m,m,m,new A.aI(0,0,0,10),m),m)],r),B.cD,B.cJ,B.iY),B.w,m,m,new A.dg(B.Gz,m,m,new A.c_(o,o,o,o),m,m,B.b2),300,new A.aI(20,20,20,20),m,300),B.at,!1,m,m,m,m,m,m,m,m,m,m,m,m,m,m,new A.ad6(),m,m,m))}r=t.w
+p.push(A.nf(m,A.jv(m,A.F0(A.b([new A.vi(2,B.ih,n,m),new A.vi(8,B.ih,A.jv(m,new A.q4(A.aAL(m,m,new A.mF("minseoIcon.png",m,m)),m),B.w,m,m,m,m,m,new A.aI(0,0,0,10),m),m)],r),B.cD,B.cJ,B.iY),B.w,m,m,new A.dg(B.Gz,m,m,new A.c_(o,o,o,o),m,m,B.b2),300,new A.aI(20,20,20,20),m,300),B.at,!1,m,m,m,m,m,m,m,m,m,m,m,m,m,m,new A.ad6(),m,m,m))}r=t.w
 p=A.bE(a,m,r).w
 r=A.bE(a,m,r).w
 return A.jv(m,A.aBg(new A.Lm(B.Qi,s.d,m),B.bc),B.w,m,m,m,r.a.b,m,m,p.a.a)}else return new A.us(m,m,m,m,m,m,m)},
