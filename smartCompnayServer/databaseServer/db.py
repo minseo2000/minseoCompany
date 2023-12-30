@@ -34,6 +34,25 @@ def makeServicesTable(connector):
     finally:
         cursor.close()
 
+def showTables(connector):
+    sql = '''
+            show tables;
+    );
+        '''
+    try:
+        with connector.cursor() as cursor:
+            cursor.execute(sql)
+            result = cursor.fetchall()
+
+            # 결과를 출력합니다.
+            for row in result:
+                print(row)
+    except pymysql.MySQLError as e:
+        print("테이블 조회 실패", e)
+        return None
+    finally:
+        cursor.close()
+
 def main():
     # 데이터베이스에 연결
     print('DB 정보를 입력해주세요')
