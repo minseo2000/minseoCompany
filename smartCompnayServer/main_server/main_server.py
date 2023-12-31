@@ -3,11 +3,13 @@ from flask import Flask, request
 from flask_restx import Api, Resource
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_cors import CORS
 import pymysql
 
 
 # Flask 애플리케이션 인스턴스와 API 인스턴스를 생성합니다.
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 
 # JWT를 설정합니다.
