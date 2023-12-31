@@ -117,7 +117,7 @@ class ServicesResource(Resource):
 
         data = request.json
         service_name = data['service_name']
-        service_img_url = data['service_image_url']
+        service_img_url = data['service_img_url']
         service_url = data['service_url']
 
         try:
