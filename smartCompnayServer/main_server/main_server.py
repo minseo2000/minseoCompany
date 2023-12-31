@@ -22,7 +22,6 @@ def get_mysql_connection(host, user, password, db):
                            user=user,
                            password=password,
                            db=db,
-                           port=50010,
                            charset='utf8')
 
 def insertUserTable(username, password):
