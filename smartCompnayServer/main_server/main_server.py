@@ -122,7 +122,7 @@ class ServicesResource(Resource):
 
         try:
             with connector.cursor(pymysql.cursors.DictCursor) as cursor:
-                cursor.execute(sql, [service_name, service_img_url, service_url])
+                cursor.execute(sql, service_name, service_img_url, service_url)
                 connector.commit()
                 return {"success to add services to database"}, 200
         except pymysql.MySQLError as e:
