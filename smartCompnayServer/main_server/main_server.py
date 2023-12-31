@@ -42,7 +42,7 @@ def insertUserTable(username, password):
 def insertServicesTable(serviceName, serviceImgUrl, serviceUrl):
 
     sql = '''
-            insert into user_table(service_name, service_img_url, service_url) values (%s, %s, %s);
+            insert into services_table(service_name, service_img_url, service_url) values (%s, %s, %s);
         '''
     try:
         with connector.cursor() as cursor:
