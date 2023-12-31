@@ -39,6 +39,21 @@ def insertUserTable(username, password):
     finally:
         cursor.close()
 
+def insertServicesTable(serviceName, serviceImgUrl, serviceUrl):
+
+    sql = '''
+            insert into user_table(service_name, service_img_url, service_url) values (%s, %s, %s);
+        '''
+    try:
+        with connector.cursor() as cursor:
+            cursor.execute(sql, [serviceName, serviceImgUrl, serviceUrl])
+            connector.commit()
+    except pymysql.MySQLError as e:
+        print("Failed to insert service information", e)
+        return None
+    finally:
+        cursor.close()
+
 # 사용자 정보를 담고 있는 예제 데이터베이스를 정의합니다.
 users = [
     {"username": "user1", "password": "abc123"},
@@ -113,22 +128,14 @@ class ServicesResource(Resource):
 
     @jwt_required()
     def post(self):
-        sql = "insert into services_table(service_name, service_img_url, service_url) values(%s, %s, %s);"
 
         data = request.json
         service_name = data['service_name']
         service_img_url = data['service_img_url']
         service_url = data['service_url']
 
-        try:
-            with connector.cursor(pymysql.cursors.DictCursor) as cursor:
-                cursor.execute(sql, (service_name, service_img_url, service_url))
-                connector.commit()
-                return {"success to add services to database"}, 200
-        except pymysql.MySQLError as e:
-            print("Failed to add services information", e)
-            return {"message": "An error occurred while retrieving services."}, 500
-
+        insertServicesTable(service_name, service_img_url, service_url)
+        return {"message": "add service list successfully."}, 201
 
 # 애플리케이션을 실행합니다.
 if __name__ == '__main__':
