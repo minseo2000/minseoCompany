@@ -79177,7 +79177,7 @@ o===$&&A.a()
 n=t.z
 k.sFi(0,A.aD(["Authorization","Bearer "+o],t.N,n))
 s=3
-return A.Z(l.ahV(0,"http:/127.0.0.1:50000/api/Services",null,null,null,A.apN("GET",null),null,n),$async$uh)
+return A.Z(l.ahV(0,"http://127.0.0.1:50000/api/Services",null,null,null,A.apN("GET",null),null,n),$async$uh)
 case 3:m=b
 A.is(m.a)
 q=m.a
@@ -79198,7 +79198,7 @@ n=t.z
 l.sFi(0,A.aD(["Authorization","Bearer "+p],o,n))
 k=A
 s=2
-return A.Z(m.S1("http:/127.0.0.1:50000/api/Services",A.aD(["service_name","minseo","service_img_url","img_url","service_url","http:/ "],o,o),A.arr("application/json"),n),$async$wE)
+return A.Z(m.S1("http://127.0.0.1:50000/api/Services",A.aD(["service_name","minseo","service_img_url","img_url","service_url","http:/ "],o,o),A.arr("application/json"),n),$async$wE)
 case 2:k.is(e.c)
 return A.R(null,r)}})
 return A.S($async$wE,r)}}
@@ -79268,7 +79268,7 @@ yc(a,b){var s=0,r=A.T(t.z),q,p
 var $async$yc=A.U(function(c,d){if(c===1)return A.Q(d,r)
 while(true)switch(s){case 0:p=t.z
 s=3
-return A.Z(A.alI(null).ahn("http:/127.0.0.1:50000/api/login",A.aD(["username",a,"password",b],t.N,p),p),$async$yc)
+return A.Z(A.alI(null).ahn("http://127.0.0.1:50000/api/login",A.aD(["username",a,"password",b],t.N,p),p),$async$yc)
 case 3:q=d
 s=1
 break
