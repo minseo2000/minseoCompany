@@ -97,7 +97,7 @@ class ProtectedResource(Resource):
         return {"logged_in_as": current_user}
 
 # services_table 데이터를 조회하는 API 라우터를 정의합니다.
-@api.route('/api/getServices')
+@api.route('/api/Services')
 class ServicesResource(Resource):
     @jwt_required()
     def get(self):
