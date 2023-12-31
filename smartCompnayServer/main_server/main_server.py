@@ -65,7 +65,6 @@ class RegisterResource(Resource):
         insertUserTable(username, password)
 
         return {"message": "User registered successfully."}, 201
-
 # 로그인 API 리소스를 정의합니다.
 @api.route('/api/login')
 class LoginResource(Resource):
@@ -81,7 +80,7 @@ class LoginResource(Resource):
                 user = cursor.fetchone()
                 if user and check_password_hash(user['user_password'], password):
                     access_token = create_access_token(identity=username)
-                    return {"access_token": access_token}
+                    return {"access_token": access_token}, 200
                 else:
                     return {"message": "Your username or password is incorrect."}, 401
         except pymysql.MySQLError as e:
@@ -97,6 +96,37 @@ class ProtectedResource(Resource):
         current_user = get_jwt_identity()
         return {"logged_in_as": current_user}
 
+# services_table 데이터를 조회하는 API 라우터를 정의합니다.
+@api.route('/api/getServices')
+class ServicesResource(Resource):
+    @jwt_required()
+    def get(self):
+        sql = "SELECT * FROM services_table"  # services_table에서 모든 데이터를 조회하는 쿼리
+        try:
+            with connector.cursor(pymysql.cursors.DictCursor) as cursor:
+                cursor.execute(sql)
+                services = cursor.fetchall()  # 모든 서비스 데이터를 조회
+                return {"services": services}, 200
+        except pymysql.MySQLError as e:
+            print("Failed to retrieve services information", e)
+            return {"message": "An error occurred while retrieving services."}, 500
+
+    @jwt_required()
+    def post(self):
+        sql = "insert into services_table(service_name, service_img_url, service_url values(%s, %s, %s);"
+
+        service_name = request.json.get('service_name', None)
+        service_img_url = request.json.get('service_img_url', None)
+        service_url = request.json.get('service_url', None)
+
+        try:
+            with connector.cursor(pymysql.cursors.DictCursor) as cursor:
+                cursor.execute(sql, [service_name, service_img_url, service_url])
+                connector.commit()
+                return {"success to add services to database"}, 200
+        except pymysql.MySQLError as e:
+            print("Failed to add services information", e)
+            return {"message": "An error occurred while retrieving services."}, 500
 
 
 # 애플리케이션을 실행합니다.
