@@ -109,7 +109,7 @@ class ProtectedResource(Resource):
     @jwt_required()
     def get(self):
         current_user = get_jwt_identity()
-        return {"logged_in_as": current_user}
+        return {"logged_in_as": current_user}, 200
 
 # services_table 데이터를 조회하는 API 라우터를 정의합니다.
 @api.route('/api/Services')
