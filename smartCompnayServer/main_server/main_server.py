@@ -143,4 +143,4 @@ if __name__ == '__main__':
     host, user, password, db = input('host, user, password, db 순 입력: ').split(' ')
     global connector
     connector = get_mysql_connection(host, user, password, db)
-    app.run(host='0.0.0.0', port=50000, debug=True)
+    app.run(host='0.0.0.0', port=50000, debug=True, ssl_context=('/etc/letsencrypt/live/minseotest.duckdns.org/fullchain.pem', '/etc/letsencrypt/live/minseotest.duckdns.org/privkey.pem'))
