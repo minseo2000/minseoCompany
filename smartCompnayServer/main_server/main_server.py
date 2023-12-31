@@ -115,9 +115,10 @@ class ServicesResource(Resource):
     def post(self):
         sql = "insert into services_table(service_name, service_img_url, service_url) values(%s, %s, %s);"
 
-        service_name = request.json.get('service_name', None)
-        service_img_url = request.json.get('service_img_url', None)
-        service_url = request.json.get('service_url', None)
+        data = request.json
+        service_name = data['service_name']
+        service_img_url = data['service_image_url']
+        service_url = data['service_url']
 
         try:
             with connector.cursor(pymysql.cursors.DictCursor) as cursor:
