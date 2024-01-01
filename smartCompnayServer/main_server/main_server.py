@@ -12,12 +12,11 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
-global host
-global user
-global password
-global db
-
-global connector
+host = ''
+user = ''
+password = ''
+db = ''
+connector = ''
 
 # JWT를 설정합니다.
 app.config['JWT_SECRET_KEY'] = 'minseo'
@@ -32,7 +31,8 @@ def get_mysql_connection(host, user, password, db):
                            charset='utf8')
 
 def insertUserTable(username, password):
-    global connector = get_mysql_connection(host, user, password, db)
+    global connector
+    connector = get_mysql_connection(host, user, password, db)
     hashed_password = generate_password_hash(password)
     sql = '''
             insert into user_table(user_name, user_password) values (%s, %s);
@@ -49,8 +49,8 @@ def insertUserTable(username, password):
         connector.close()
 
 def insertServicesTable(serviceName, serviceImgUrl, serviceUrl):
-
-    global connector = get_mysql_connection(host, user, password, db)
+    global connector
+    connector = get_mysql_connection(host, user, password, db)
     sql = '''
             insert into services_table(service_name, service_img_url, service_url) values (%s, %s, %s);
         '''
@@ -96,7 +96,8 @@ class RegisterResource(Resource):
 @api.route('/api/login')
 class LoginResource(Resource):
     def post(self):
-        global connector = get_mysql_connection(host, user, password, db)
+        global connector
+        connector = get_mysql_connection(host, user, password, db)
         username = request.json.get('username', None)
         password = request.json.get('password', None)
 
@@ -131,7 +132,8 @@ class ProtectedResource(Resource):
 class ServicesResource(Resource):
     @jwt_required()
     def get(self):
-        global connector = get_mysql_connection(host, user, password, db)
+        global connector
+        connector = get_mysql_connection(host, user, password, db)
         sql = "SELECT * FROM services_table"  # services_table에서 모든 데이터를 조회하는 쿼리
         try:
             with connector.cursor(pymysql.cursors.DictCursor) as cursor:
