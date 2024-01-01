@@ -150,7 +150,10 @@ class ServicesResource(Resource):
 
 # 애플리케이션을 실행합니다.
 if __name__ == '__main__':
-    global host, user, password, db
+    global host
+    global user
+    global password
+    global db
     host, user, password, db = input('host, user, password, db 순 입력: ').split(' ')
     global connector
     app.run(host='0.0.0.0', port=50000, debug=True, ssl_context=('/etc/letsencrypt/live/minseotest.duckdns.org/fullchain.pem', '/etc/letsencrypt/live/minseotest.duckdns.org/privkey.pem'))
