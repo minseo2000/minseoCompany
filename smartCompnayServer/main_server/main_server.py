@@ -19,7 +19,8 @@ app.config['JWT_SECRET_KEY'] = 'minseo'
 jwt = JWTManager(app)
 
 # MySQL 데이터베이스 연결 설정
-def get_mysql_connection(host, user, password, db):
+def get_mysql_connection():
+    global host, user, password, db
     return pymysql.connect(host=host,
                            user=user,
                            password=password,
@@ -28,7 +29,7 @@ def get_mysql_connection(host, user, password, db):
 
 def insertUserTable(username, password):
     global connector
-    connector = get_mysql_connection(host, user, password, db)
+    connector = get_mysql_connection()
     hashed_password = generate_password_hash(password)
     sql = '''
             insert into user_table(user_name, user_password) values (%s, %s);
@@ -46,7 +47,7 @@ def insertUserTable(username, password):
 
 def insertServicesTable(serviceName, serviceImgUrl, serviceUrl):
     global connector
-    connector = get_mysql_connection(host, user, password, db)
+    connector = get_mysql_connection()
     sql = '''
             insert into services_table(service_name, service_img_url, service_url) values (%s, %s, %s);
         '''
@@ -93,7 +94,7 @@ class RegisterResource(Resource):
 class LoginResource(Resource):
     def post(self):
         global connector
-        connector = get_mysql_connection(host, user, password, db)
+        connector = get_mysql_connection()
         username = request.json.get('username', None)
         password = request.json.get('password', None)
 
@@ -129,7 +130,7 @@ class ServicesResource(Resource):
     @jwt_required()
     def get(self):
         global connector
-        connector = get_mysql_connection(host, user, password, db)
+        connector = get_mysql_connection()
         sql = "SELECT * FROM services_table"  # services_table에서 모든 데이터를 조회하는 쿼리
         try:
             with connector.cursor(pymysql.cursors.DictCursor) as cursor:
