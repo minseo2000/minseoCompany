@@ -12,6 +12,13 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
+global host
+global user
+global password
+global db
+
+global connector
+
 # JWT를 설정합니다.
 app.config['JWT_SECRET_KEY'] = 'minseo'
 jwt = JWTManager(app)
@@ -25,7 +32,7 @@ def get_mysql_connection(host, user, password, db):
                            charset='utf8')
 
 def insertUserTable(username, password):
-    connector = get_mysql_connection(host, user, password, db)
+    global connector = get_mysql_connection(host, user, password, db)
     hashed_password = generate_password_hash(password)
     sql = '''
             insert into user_table(user_name, user_password) values (%s, %s);
@@ -43,7 +50,7 @@ def insertUserTable(username, password):
 
 def insertServicesTable(serviceName, serviceImgUrl, serviceUrl):
 
-    connector = get_mysql_connection(host, user, password, db)
+    global connector = get_mysql_connection(host, user, password, db)
     sql = '''
             insert into services_table(service_name, service_img_url, service_url) values (%s, %s, %s);
         '''
@@ -89,7 +96,7 @@ class RegisterResource(Resource):
 @api.route('/api/login')
 class LoginResource(Resource):
     def post(self):
-        connector = get_mysql_connection(host, user, password, db)
+        global connector = get_mysql_connection(host, user, password, db)
         username = request.json.get('username', None)
         password = request.json.get('password', None)
 
@@ -124,7 +131,7 @@ class ProtectedResource(Resource):
 class ServicesResource(Resource):
     @jwt_required()
     def get(self):
-        connector = get_mysql_connection(host, user, password, db)
+        global connector = get_mysql_connection(host, user, password, db)
         sql = "SELECT * FROM services_table"  # services_table에서 모든 데이터를 조회하는 쿼리
         try:
             with connector.cursor(pymysql.cursors.DictCursor) as cursor:
@@ -150,10 +157,5 @@ class ServicesResource(Resource):
 
 # 애플리케이션을 실행합니다.
 if __name__ == '__main__':
-    global host
-    global user
-    global password
-    global db
     host, user, password, db = input('host, user, password, db 순 입력: ').split(' ')
-    global connector
     app.run(host='0.0.0.0', port=50000, debug=True, ssl_context=('/etc/letsencrypt/live/minseotest.duckdns.org/fullchain.pem', '/etc/letsencrypt/live/minseotest.duckdns.org/privkey.pem'))
