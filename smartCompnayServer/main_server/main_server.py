@@ -25,6 +25,7 @@ def get_mysql_connection(host, user, password, db):
                            charset='utf8')
 
 def insertUserTable(username, password):
+    connector = get_mysql_connection(host, user, password, db)
     hashed_password = generate_password_hash(password)
     sql = '''
             insert into user_table(user_name, user_password) values (%s, %s);
@@ -38,9 +39,11 @@ def insertUserTable(username, password):
         return None
     finally:
         cursor.close()
+        connector.close()
 
 def insertServicesTable(serviceName, serviceImgUrl, serviceUrl):
 
+    connector = get_mysql_connection(host, user, password, db)
     sql = '''
             insert into services_table(service_name, service_img_url, service_url) values (%s, %s, %s);
         '''
@@ -53,6 +56,7 @@ def insertServicesTable(serviceName, serviceImgUrl, serviceUrl):
         return None
     finally:
         cursor.close()
+        connector.close()
 
 # 사용자 정보를 담고 있는 예제 데이터베이스를 정의합니다.
 users = [
@@ -64,6 +68,7 @@ users = [
 @api.route('/api/register')
 class RegisterResource(Resource):
     def post(self):
+
         # 요청으로부터 사용자 이름과 비밀번호 추출
         username = request.json.get('username', None)
         password = request.json.get('password', None)
@@ -84,6 +89,7 @@ class RegisterResource(Resource):
 @api.route('/api/login')
 class LoginResource(Resource):
     def post(self):
+        connector = get_mysql_connection(host, user, password, db)
         username = request.json.get('username', None)
         password = request.json.get('password', None)
 
@@ -101,7 +107,9 @@ class LoginResource(Resource):
         except pymysql.MySQLError as e:
             print("Failed to retrieve member information", e)
             return {"message": "An error occurred during login."}, 500
-
+        finally:
+            cursor.close()
+            connector.close()
 
 # 보호된 API 리소스를 정의합니다.
 @api.route('/protected')
@@ -116,6 +124,7 @@ class ProtectedResource(Resource):
 class ServicesResource(Resource):
     @jwt_required()
     def get(self):
+        connector = get_mysql_connection(host, user, password, db)
         sql = "SELECT * FROM services_table"  # services_table에서 모든 데이터를 조회하는 쿼리
         try:
             with connector.cursor(pymysql.cursors.DictCursor) as cursor:
@@ -125,7 +134,9 @@ class ServicesResource(Resource):
         except pymysql.MySQLError as e:
             print("Failed to retrieve services information", e)
             return {"message": "An error occurred while retrieving services."}, 500
-
+        finally:
+            cursor.close()
+            connector.close()
     @jwt_required()
     def post(self):
 
@@ -142,5 +153,4 @@ if __name__ == '__main__':
     global host, user, password, db
     host, user, password, db = input('host, user, password, db 순 입력: ').split(' ')
     global connector
-    connector = get_mysql_connection(host, user, password, db)
     app.run(host='0.0.0.0', port=50000, debug=True, ssl_context=('/etc/letsencrypt/live/minseotest.duckdns.org/fullchain.pem', '/etc/letsencrypt/live/minseotest.duckdns.org/privkey.pem'))
